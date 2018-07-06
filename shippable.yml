@@ -6,6 +6,8 @@ jobs:
           name: check-get-git-changes
           script:
             - echo "hello"
+            - ls
+            - git log
       - TASK:
           name: get_integration_resource_field
           script:
