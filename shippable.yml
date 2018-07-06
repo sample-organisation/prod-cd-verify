@@ -3,6 +3,7 @@ jobs:
     type: runSh
     steps:
       - IN: master-gitRepo
+      - IN: sample_kv_int
       - TASK:
           name: check-get-git-changes
           script:
@@ -11,7 +12,7 @@ jobs:
       - TASK:
           name: get_integration_resource_field
           script:
-            - echo "hello"
+            - shipctl get_integration_resource_field sample_kv_int key1 
             
 resources:          
   - name: master-gitRepo
@@ -21,3 +22,7 @@ resources:
       sourceName: sample-organisation/gitRepo
       branch: prod_get_git_changes
       buildOnPullRequest: true
+
+  - name: sample_kv_int
+    type: integration
+    integration: sample_kv
