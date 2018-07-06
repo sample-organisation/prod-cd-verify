@@ -1,0 +1,12 @@
+jobs:
+  - name: verify-v-6-6-4
+    type: runSh
+    steps:
+      - TASK:
+          name: check-get-git-changes
+          script:
+            - echo "hello"
+      - TASK:
+          name: get_integration_resource_field
+          script:
+            - echo "hello"
