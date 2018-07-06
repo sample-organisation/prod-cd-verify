@@ -2,13 +2,22 @@ jobs:
   - name: verify-v-6-6-4
     type: runSh
     steps:
+      - IN: master-gitRepo
       - TASK:
           name: check-get-git-changes
           script:
             - echo "hello"
-            - ls
-            - git log
+            - shipctl get_git_changes --resource="master-gitRepo"
       - TASK:
           name: get_integration_resource_field
           script:
             - echo "hello"
+            
+resources:          
+  - name: master-gitRepo
+    type: gitRepo
+    integration: drship_github
+    pointer:
+      sourceName: sample-organisation/gitRepo
+      branch: prod_get_git_changes
+      buildOnPullRequest: true
