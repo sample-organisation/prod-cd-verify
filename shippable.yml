@@ -26,3 +26,7 @@ resources:
   - name: sample_kv_int
     type: integration
     integration: sample_kv
+    
+  - name: sample_aws_int
+    type: integration
+    integration: sample_aws
