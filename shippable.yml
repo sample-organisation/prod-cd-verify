@@ -4,6 +4,7 @@ jobs:
     steps:
       - IN: master-gitRepo
       - IN: sample_kv_int
+      - IN: sample_aws_int
       - TASK:
           name: check-get-git-changes
           script:
