@@ -13,6 +13,16 @@ jobs:
           name: get_integration_resource_field
           script:
             - shipctl get_integration_resource_field sample_kv_int key1
+      - TASK:
+          name: temp
+          script:
+            - git clone https://github.com/scriptnull/node.git nodeRepo
+            - ./nodeRepo/shipctl/x86_64/Ubuntu_16.04/install.sh
+            - shipctl get_integration_resource_field sample_kv_int key1
+            - shipctl get_integration_resource_field sample_aws_int accessKey
+            - shipctl get_integration_resource_field invalid_resource_name accessKey
+            - shipctl get_integration_resource_field sample_kv_int invalid_key
+            
             
 resources:          
   - name: master-gitRepo
@@ -26,4 +36,8 @@ resources:
   - name: sample_kv_int
     type: integration
     integration: sample_kv
+    
+  - name: sample_aws_int
+    type: integration
+    integration: sample_aws
     
