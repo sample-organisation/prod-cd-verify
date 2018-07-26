@@ -4,7 +4,6 @@ jobs:
     steps:
       - IN: master-gitRepo
       - IN: sample_kv_int
-      - IN: sample_aws_int
       - TASK:
           name: check-get-git-changes
           script:
@@ -14,9 +13,16 @@ jobs:
           name: get_integration_resource_field
           script:
             - shipctl get_integration_resource_field sample_kv_int key1
+            
+  - name: verify-v-6-7-4
+    type: runSh
+    steps:
+      - IN: sample_kv_int
+      - IN: sample_aws_int
       - TASK:
           name: temp
           script:
+            # remove clone step after release
             - git clone https://github.com/scriptnull/node.git nodeRepo
             - ./nodeRepo/shipctl/x86_64/Ubuntu_16.04/install.sh
             - shipctl get_integration_resource_field sample_kv_int key1
