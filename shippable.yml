@@ -42,8 +42,6 @@ jobs:
   - name: verify-v-6-8-1
     type: runSh
     steps:
-      - IN: master-gitRepo
-      - IN: sample_kv_int
       - TASK:
           name: check-env-for-slack-envs
           script:
