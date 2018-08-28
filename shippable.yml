@@ -38,6 +38,17 @@ jobs:
             - shipctl get_integration_resource_field sample_aws_int accessKey
             - shipctl get_integration_resource_field sample_aws_int invalid_key
             - shipctl get_integration_resource_field invalid_resource_name accessKey
+            
+  - name: verify-v-6-8-1
+    type: runSh
+    steps:
+      - IN: master-gitRepo
+      - IN: sample_kv_int
+      - TASK:
+          name: check-env-for-slack-envs
+          script:
+            - echo "hello"
+            - printenv
 
 resources:          
   - name: master-gitRepo
